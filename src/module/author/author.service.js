@@ -1,5 +1,5 @@
 import {AuthorModel} from "../../model/author.model.js"
-// ADD NEW AUHTOR 
-export const addAuthorService=(data)=>{
-return 
+// ADD NEW AUTHOR 
+export async function addAuthorSevices(data){
+    return await AuthorModel.create(data)
 }
