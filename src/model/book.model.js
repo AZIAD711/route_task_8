@@ -1,52 +1,54 @@
-import { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
+
 const bookSchema = new Schema({
     // TITLE
     title: {
-        stype: [String, "Title must be a string"],
+        type: String,
         required: [true, "Title is required"],
         unique: [true, "Title must be unique"],
         trim: true,
-        valdiate: {
-            valditor: function (value) {
-                return value.length >= 3 && value.length < 256
-            }
+        validate: {
+            validator: function (value) {
+                return value.length >= 3 && value.length < 256;
+            },
+            message: "Title must be between 3 and 255 characters"
         }
     },
     // AUTHOR
     author: {
-        stype: [String, "Author must be a string"],
+        type: String,
         required: [true, "Author is required"],
-        unique: [true, "Author must be unique"],
-        required: true,
-        valdiate: {
-            valditor: function (value) {
-                return value.length >= 3 && value.length < 256
-            }
+        trim: true,
+        validate: {
+            validator: function (value) {
+                return value.length >= 3 && value.length < 256;
+            },
+            message: "Author name must be between 3 and 255 characters"
         }
     },
     // YEAR
     year: {
-        type: [Number, "Year must be a number"],
+        type: Number,
         required: [true, "Year is required"],
         min: [1900, "Year must be greater than 1900"],
         max: [2026, "Year must be less than 2026"],
     },
     // GENRE
-    genre: [{
-        type: [String, "Genre must be a string"],
-    }]
-},
-    {
-        timestamps: true,
-        strict: true,
-        strictQuery: true,
-        toJSON: {
-            virtuals: true,
-        },
-        toObject: {
-            virtuals: true,
-        }
+    genre: {
+        type: [String],
     }
-)
-const BookModel = model("Book",bookSchema)
-export default BookModel
+},
+{
+    timestamps: true,
+    strict: true,
+    strictQuery: true,
+    toJSON: {
+        virtuals: true,
+    },
+    toObject: {
+        virtuals: true,
+    }
+});
+
+const BookModel = model("Book", bookSchema);
+export { BookModel };
