@@ -1,0 +1,24 @@
+{
+  "name": "route_task_8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AZIAD711/route_task_8.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AZIAD711/route_task_8/issues"
+  },
+  "homepage": "https://github.com/AZIAD711/route_task_8#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.6.2"
+  }
+}
