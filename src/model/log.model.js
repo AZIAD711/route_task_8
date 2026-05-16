@@ -4,7 +4,6 @@ const logSchema = new Schema({
     // MESSAGE
     message: {
         type: String,
-        required: [true, "Message is required"],
         trim: true,
         validate: {
             validator: function (value) {
@@ -12,10 +11,6 @@ const logSchema = new Schema({
             },
             message: "Message must be between 4 and 255 characters"
         }
-    },
-    // CAPPED
-    capped: {
-        size:1024 * 1024
     },
 
 },
@@ -28,7 +23,10 @@ const logSchema = new Schema({
     },
     toObject: {
         virtuals: true,
-    }
+    },
+    capped: {
+        size:1024 * 1024
+    },
 });
 
 const LogModel = model("Log", logSchema);
